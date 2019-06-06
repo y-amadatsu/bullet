@@ -523,7 +523,7 @@ if active_record?
         expect(Bullet::Detector::Association).to be_completely_preloading_associations
       end
 
-      it 'should not detect preload associations' do
+      it 'should not detect preload associations using AR #joins' do
         Firm.includes(:clients).joins(:clients).order('firms.id, clients.id').each do |firm|
           firm.clients.map(&:name)
         end
